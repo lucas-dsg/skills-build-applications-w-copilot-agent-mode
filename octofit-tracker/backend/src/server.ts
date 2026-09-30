@@ -1,3 +1,4 @@
+import cors from 'cors';
 import express from 'express';
 import './config/database.js';
 import activitiesRouter from './routes/activities.js';
@@ -14,6 +15,7 @@ const apiBaseUrl = codespaceName
   : 'http://localhost:8000';
 
 app.use(express.json());
+app.use(cors());
 
 app.get('/api/health', (_request, response) => {
   response.json({ status: 'ok', service: 'octofit-tracker-api', apiBaseUrl });

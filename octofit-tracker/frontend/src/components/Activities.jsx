@@ -2,13 +2,15 @@ import { useEffect, useState } from 'react'
 import { fetchCollection } from '../lib/api.js'
 import { CollectionState, PageHeader } from './CollectionState.jsx'
 
+const ACTIVITIES_ENDPOINT = '/api/activities/'
+
 function Activities() {
   const [activities, setActivities] = useState([])
   const [state, setState] = useState({ loading: true, error: '' })
 
   useEffect(() => {
     const controller = new AbortController()
-    fetchCollection('activities', controller.signal).then((data) => { setActivities(data); setState({ loading: false, error: '' }) }).catch((error) => { if (error.name !== 'AbortError') setState({ loading: false, error: error.message }) })
+    fetchCollection(ACTIVITIES_ENDPOINT, controller.signal).then((data) => { setActivities(data); setState({ loading: false, error: '' }) }).catch((error) => { if (error.name !== 'AbortError') setState({ loading: false, error: error.message }) })
     return () => controller.abort()
   }, [])
 

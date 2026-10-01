@@ -4,7 +4,7 @@ The React 19 presentation tier uses Vite and React Router to consume the API on 
 
 ## Environment
 
-In Codespaces, define `VITE_CODESPACE_NAME` in `.env.local` with the Codespace name. The frontend then calls `https://$VITE_CODESPACE_NAME-8000.app.github.dev/api/...`.
+In Codespaces, define `VITE_CODESPACE_NAME` in `.env.local` with the Codespace name. Vite also inherits `CODESPACE_NAME` automatically when the Vite variable is not defined. The frontend then calls `https://$VITE_CODESPACE_NAME-8000.app.github.dev/api/...`.
 
 When `VITE_CODESPACE_NAME` is not defined, the API client safely falls back to `http://localhost:8000`.
 
